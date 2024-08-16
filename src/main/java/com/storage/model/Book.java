@@ -29,9 +29,10 @@ public class Book {
 	private String genere;
 	private boolean isBorrowed;
 
-	public Book(String title, String author) {
+	public Book(String title, String author, String genere) {
 		this.title = title;
 		this.author = author;
+		this.genere = genere;
 		this.isBorrowed = false; // Default to false
 	}
 }

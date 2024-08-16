@@ -29,6 +29,8 @@ class BookServiceTest {
 
     @Autowired
     private BookRepository bookRepository;
+    
+    private final Book dummyBook = new Book("Test Title", "Test Author", "Comedy");
 
     @BeforeEach
     void setUp() {
@@ -39,7 +41,7 @@ class BookServiceTest {
     @Transactional
     void testAddBook() {
         // Arrange
-        Book book = new Book("Test Title", "Test Author");
+        Book book = dummyBook;
 
         // Act
         Book savedBook = bookService.addBook(book);
@@ -55,7 +57,7 @@ class BookServiceTest {
     @Transactional
     void testGetBookById() {
         // Arrange
-        Book book = new Book("Test Title", "Test Author");
+        Book book = dummyBook;
         Book savedBook = bookRepository.save(book);
 
         // Act
@@ -70,8 +72,8 @@ class BookServiceTest {
     @Transactional
     void testGetAllAvailableBooks() {
         // Arrange
-        Book book1 = new Book("Available Book 1", "Author 1");
-        Book book2 = new Book("Available Book 2", "Author 2");
+        Book book1 = new Book("Available Book 1", "Author 1", "Comedy");
+        Book book2 = new Book("Available Book 2", "Author 2", "Horror");
         bookRepository.save(book1);
         bookRepository.save(book2);
 
@@ -87,7 +89,7 @@ class BookServiceTest {
     @Transactional
     void testBorrowBook() {
         // Arrange
-        Book book = new Book("Borrowed Book", "Author 1");
+        Book book = dummyBook;
         Book savedBook = bookRepository.save(book);
 
         // Act
