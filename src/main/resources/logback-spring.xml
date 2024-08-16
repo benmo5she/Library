@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Define the pattern for log messages -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} - %-5level - %logger{36} - %msg%n" />
+
+    <!-- Console appender configuration -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File appender configuration (if needed) -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>library.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set the root logger level and attach appenders -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <!-- Uncomment the following line to enable file logging -->
+        <!-- <appender-ref ref="FILE" /> -->
+    </root>
+
+    <!-- Configure logging levels for specific packages -->
+    <logger name="com.storage.service" level="DEBUG" />
+    <logger name="com.storage.controller" level="DEBUG" />
+
+</configuration>
